@@ -4,15 +4,15 @@ use expensetracker;
 
 create table user(
 userID int UNSIGNED NOT NULL AUTO_INCREMENT,
-username varchar(50) NOT NULL,
-password varchar(30) NOT NULL,
+email varchar(256) NOT NULL,
+password varchar(1024) NOT NULL,
 PRIMARY KEY (userID)
 );
 
 create table expense(
 itemID int UNSIGNED NOT NULL AUTO_INCREMENT,
-item varchar(50) NOT NULL,
-category varchar(20) NOT NULL,
+item varchar(256) NOT NULL,
+category varchar(256) NOT NULL,
 cost decimal(13,2) NOT NULL,
 userID int UNSIGNED NOT NULL,
 PRIMARY KEY (itemID),
@@ -21,7 +21,7 @@ FOREIGN KEY (userID) REFERENCES user (userID)
 
 create table budget(
 budgetID int UNSIGNED NOT NULL AUTO_INCREMENT,
-category varchar(50) NOT NULL,
+category varchar(256) NOT NULL,
 budget decimal(13,2) NOT NULL,
 userID int UNSIGNED NOT NULL,
 PRIMARY KEY (budgetID),
