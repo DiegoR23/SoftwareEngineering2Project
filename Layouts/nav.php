@@ -2,10 +2,9 @@
   $this_page = basename($_SERVER["PHP_SELF"]);
   $html =
   '
-  <a href="index.php">Home</a>
-  <a href="about.php">About</a>
-  <a href="privatecontents.php">Private</a>
-  <a href="me.php">Me</a>
+  <a href="index.php">Login</a>
+  <a href="expenses.php">Expenses</a>
+  <a href="report.php">Report</a>
   ';
   $dom = new DOMDocument();
   $dom->loadHTML($html);
