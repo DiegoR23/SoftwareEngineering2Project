@@ -56,31 +56,60 @@ if(isset($_POST["logout"])){
   <head>
     <meta charset="utf-8">
     <title>ExpenseTracker</title>
+    <link rel="stylesheet" href="./frontend/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
   </head>
   <body>
     <?php require_once './layouts/nav.php'; ?>
+    <div class="info-container">
+      <div class="image">
+          <img src="./images/logo.png" alt="Website Logo">
+      </div>
+    </div>
 
-  <?php if (!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){ ?>
-    <h1>Login or Signup</h1>
-    <h2>Signup</h2>
-    <form method="post">
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
-      <button type="submit" name="signup" value="<?php echo $rand; ?>" >Signup</button>
-    </form>
-    <hr>
-    <h2>Login</h2>
-    <form method="post">
-    <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
-      <button type="submit" name="login" >Login</button>
-    </form>
-  <?php }else{ ?>
-    <h1>Logout</h1>
-      <form method="post">
-        <button type="submit" name="logout">Logout</button>
-      </form>
-  <?php } ?>
+    <?php if (!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){ ?>
+      <h1>Login or Signup</h1>
+
+      <div class="form-body">
+        <form method="post" class="form-form">
+          <h2>Login</h2>
+          <div class="form-container">
+            <hr>
+            <div class="container">
+              <label for="email"><strong>Email</strong></label>
+              <input class="form-input" type="email" name="email" placeholder="Email" required>
+              <label for="password"><strong>Password</strong></label>
+              <input class="form-input" type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
+            </div>
+            <button class="form-button" type="submit" name="login" >Login</button>
+          </div>
+        </form>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="form-body">
+        <form method="post" class="form-form">
+          <h2>Signup</h2>
+          <div class="form-container">
+            <hr>
+            <div class="container">
+              <label for="email"><strong>Email</strong></label>
+              <input class="form-input" type="email" name="email" placeholder="Email" required>
+              <label for="password"><strong>Password</strong></label>
+              <input class="form-input" type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
+            </div>
+            <button class="form-button" type="submit" name="signup" value="<?php echo $rand; ?>" >Signup</button>
+          </div>
+        </form>
+      </div>
+    <?php }else{ ?>
+      <h1>Logout</h1>
+        <form method="post">
+          <button type="submit" name="logout">Logout</button>
+        </form>
+    <?php } ?>
   <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );

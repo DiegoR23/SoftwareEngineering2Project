@@ -13,6 +13,6 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
    </head>
    <body>
       <?php require_once './layouts/nav.php'; ?>
-      <h1>Report</h1>
+      <h1>Expenses Report</h1>
    </body>
  </html>
