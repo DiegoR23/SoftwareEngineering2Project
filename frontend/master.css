@@ -7,18 +7,24 @@ html{
 
 /* css for index.php */
 
+  .index-body{
+    background: #333333;
+  }
+
+  /* image and website description */
   .info-container{
     display: flex;
     justify-content: center;
   }
 
-  .image img{
+  .info-container .image img{
     width: 100%;
     padding-top: 0;
   }
 
-  h1{
+  .index-body h1{
     text-align: center;
+    color: white;
   }
 
   /* login and signup forms */
@@ -30,6 +36,7 @@ html{
   }
 
   .form-form{
+    background: white;
     border: 5px solid #8ebf42;
   }
 

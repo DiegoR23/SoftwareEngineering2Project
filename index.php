@@ -59,7 +59,7 @@ if(isset($_POST["logout"])){
     <link rel="stylesheet" href="./frontend/master.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
   </head>
-  <body>
+  <body class="index-body">
     <?php require_once './layouts/nav.php'; ?>
     <div class="info-container">
       <div class="image">
