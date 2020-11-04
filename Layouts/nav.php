@@ -2,7 +2,7 @@
   $this_page = basename($_SERVER["PHP_SELF"]);
   $html =
   '
-  <a href="index.php">Login</a>
+  <a id="login" href="index.php">Login</a>
   <a href="expenses.php">Expenses</a>
   <a href="report.php">Report</a>
   ';
@@ -15,8 +15,14 @@
       break;
     }
   }
+  if($_SESSION["is_loged_in"]==true){
+    $login = $dom->getElementbyId("login");
+    $login->textContent = "Logout";
+  }
   $html = $dom->saveHTML();
 ?>
-<nav>
-  <?php echo $html; ?>
-</nav>
+<div class="navigation">
+  <nav>
+    <?php echo $html; ?>
+  </nav>
+</div>

@@ -53,14 +53,10 @@ if(isset($_POST["logout"])){
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>ExpenseTracker</title>
-    <link rel="stylesheet" href="./frontend/master.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  </head>
+  <?php require_once './layouts/head.php'; ?>
   <body class="index-body">
     <?php require_once './layouts/nav.php'; ?>
+
     <div class="info-container">
       <div class="image">
           <img src="./images/logo.png" alt="Website Logo">
@@ -70,6 +66,7 @@ if(isset($_POST["logout"])){
     <?php if (!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){ ?>
       <h1>Login or Signup</h1>
 
+      <!-- user login form -->
       <div class="form-body">
         <form method="post" class="form-form">
           <h2>Login</h2>
@@ -89,6 +86,7 @@ if(isset($_POST["logout"])){
       <br>
       <br>
 
+      <!-- user signup form -->
       <div class="form-body">
         <form method="post" class="form-form">
           <h2>Signup</h2>
@@ -105,10 +103,17 @@ if(isset($_POST["logout"])){
         </form>
       </div>
     <?php }else{ ?>
-      <h1>Logout</h1>
-        <form method="post">
-          <button type="submit" name="logout">Logout</button>
+
+      <div class="form-body">
+        <form method="post" class="form-form">
+            <h2>Logout</h2>
+              <div class="form-container">
+                <hr>
+                <button class="form-button" type="submit" name="logout">Logout</button>
+              </div>
         </form>
+      </div>
+
     <?php } ?>
   <script>
     if ( window.history.replaceState ) {

@@ -5,6 +5,40 @@ html{
   box-sizing: inherit;
 }
 
+/* css for nav.php */
+
+  .navigation{
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  .navigation nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 4vw;
+    background: #8ebf42;
+    margin-bottom: 2vw;
+  }
+
+  .navigation nav a{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #333333;
+    padding-left: 2vw;
+  }
+
+  .navigation nav a:last-of-type{
+    padding-right: 3vw;
+  }
+
+  .navigation .this-page{
+    color: white;
+  }
+
 /* css for index.php */
 
   .index-body{
