@@ -5,6 +5,16 @@ html{
   box-sizing: inherit;
 }
 
+/* css for all */
+
+  body{
+    background: #333333;
+  }
+
+  h1{
+    color: white;
+  }
+
 /* css for nav.php */
 
   .navigation{
@@ -40,10 +50,6 @@ html{
   }
 
 /* css for index.php */
-
-  .index-body{
-    background: #333333;
-  }
 
   /* image and website description */
   .info-container{
@@ -133,3 +139,5 @@ html{
   .form-button-logout:hover{
     opacity: 0.9;
   }
+
+/* css for expenses.php */

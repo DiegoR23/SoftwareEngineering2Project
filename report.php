@@ -10,6 +10,6 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
    <?php require_once './layouts/head.php'; ?>
    <body>
       <?php require_once './layouts/nav.php'; ?>
-      <h1>Expenses Report</h1>
+      <h1>Your Expense Report:</h1>
    </body>
  </html>
