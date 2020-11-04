@@ -105,11 +105,11 @@ if(isset($_POST["logout"])){
     <?php }else{ ?>
 
       <div class="form-body">
-        <form method="post" class="form-form">
+        <form method="post" class="form-form-logout">
             <h2>Logout</h2>
               <div class="form-container">
                 <hr>
-                <button class="form-button" type="submit" name="logout">Logout</button>
+                <button class="form-button-logout" type="submit" name="logout">Logout</button>
               </div>
         </form>
       </div>
