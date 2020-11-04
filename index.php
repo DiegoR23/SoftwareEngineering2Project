@@ -76,7 +76,7 @@ if(isset($_POST["logout"])){
               <label for="email"><strong>Email</strong></label>
               <input class="form-input" type="email" name="email" placeholder="Email" required>
               <label for="password"><strong>Password</strong></label>
-              <input class="form-input" type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
+              <input class="form-input" type="password" name="password" placeholder="Password (Must not be empty or all spaces)" required>
             </div>
             <button class="form-button" type="submit" name="login" >Login</button>
           </div>
@@ -96,7 +96,7 @@ if(isset($_POST["logout"])){
               <label for="email"><strong>Email</strong></label>
               <input class="form-input" type="email" name="email" placeholder="Email" required>
               <label for="password"><strong>Password</strong></label>
-              <input class="form-input" type="password" name="password" placeholder="Password (Must not be Empty or all spaces)" required>
+              <input class="form-input" type="password" name="password" placeholder="Password (Must not be empty or all spaces)" required>
             </div>
             <button class="form-button" type="submit" name="signup" value="<?php echo $rand; ?>" >Signup</button>
           </div>
@@ -104,6 +104,10 @@ if(isset($_POST["logout"])){
       </div>
     <?php }else{ ?>
 
+      <br>
+      <br>
+
+      <!-- user logout form -->
       <div class="form-body">
         <form method="post" class="form-form-logout">
             <h2>Logout</h2>
