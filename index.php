@@ -54,7 +54,7 @@ if(isset($_POST["logout"])){
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <?php require_once './layouts/head.php'; ?>
-  <body>
+  <body class="index-body">
     <?php require_once './layouts/nav.php'; ?>
 
     <div class="info-container">
