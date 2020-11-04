@@ -14,5 +14,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
    <body>
      <?php require_once './layouts/nav.php'; ?>
     <h1>Expenses</h1>
+    <br>
+    <?php echo '<p> This is the usersID: '.$_SESSION['user'].'</p>'; ?>
    </body>
  </html>
