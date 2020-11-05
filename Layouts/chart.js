@@ -1,6 +1,4 @@
 <?php
- $connect = mysqli_connect("localhost", "root", "", "testing");
- $query = "SELECT gender, count(*) as number FROM tbl_employee GROUP BY gender";
  $result = mysqli_query($connect, $query);
  ?>
  <!DOCTYPE html>
@@ -21,7 +19,7 @@
                                echo "['".$row["gender"]."', ".$row["number"]."],";
                           }
                           ?>
-                     ]);  
+                     ]);
                 var options = {
                       title: 'Percentage of Male and Female Employee',
                       //is3D:true,
