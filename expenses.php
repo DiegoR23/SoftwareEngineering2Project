@@ -80,7 +80,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
         && is_numeric($_POST["budget"])
       ){
         $category = filter_var(trim($_POST["category"]), FILTER_SANITIZE_STRING);
-        $budget = filter_var(trim($_POST["budget"]), FILTER_SANITIZE_NUMBER_FLOAT);
+        $budget = filter_var(trim($_POST["budget"]), FLITER_SANITIZE_STRING);
         $sql = "SELECT category from budget where category='" . $category . "' and userID='" . $userID . "' LIMIT 1;";
         $check = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         if (empty($check)){
@@ -91,6 +91,23 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
           $sql = "UPDATE budget SET budget='" . $budget ."' WHERE category='" . $category ."' and userID='" . $userID . "';";
           $db->exec($sql);
         }
+
+    if(isset($_POST["expensebutton"], $_POST["item"], $_POST["cost"], $_POST["category"])
+        && is_string($_POST["item"])
+        && is_numeric($_POST["cost"])
+        && is_numeric($_POST["category"])
+      ){
+        $item = filter_var(trim(trim($_POST["item"]),FILTER_SANITIZE_STRING);
+        $cost = filter_var(trim(trim($_POST["cost"]),FILTER_SANITIZE_STRING);
+        $category = filter_var(trim($_POST)["category"]),FILTER_SANITIZE_STRING);
+        $sql = "SELECT category from expense where category='" . $category . "' and userID='" . $userID . "' LIMIT 1;";
+        $db->exec($sql);
+      }
+      else{
+        $sql = "INSERT INTO expense (item, cost, category, userID) VALUES ('" . $item ."', '" . $cost . "', '" . $category . "', '" . $userID ."');";
+        $db->exec($sql);
+      }
+
       }
 
   ?>
@@ -120,5 +137,6 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
       <button class="round-button" type="submit" name="addexpenseform">+</button>
     </div>
 
+    <?php echo '<p> This is the usersID: '.$_SESSION['user'].'</p>'; ?>
    </body>
  </html>
