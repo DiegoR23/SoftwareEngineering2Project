@@ -120,6 +120,5 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
       <button class="round-button" type="submit" name="addexpenseform">+</button>
     </div>
 
-    <?php echo '<p> This is the usersID: '.$_SESSION['user'].'</p>'; ?>
    </body>
  </html>
