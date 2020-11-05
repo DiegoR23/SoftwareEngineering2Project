@@ -145,6 +145,18 @@ html{
 
 
   /* expense form */
-  .form-expense-button{
+  .container label:first-of-type{
+    padding-left: 0;
+  }
+
+  .container label{
+    padding-left: 1vw;
+  }
+
+  .form-expense-input{
+    padding: 16px 8px;
+    margin: 8px 0;
     display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
   }

@@ -31,12 +31,12 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
          <label for="budget"><strong>Budget</strong></label>
          <input class="" type="number" name="budget" placeholder="Budget" required>
        </div>
-       <button class="" type="submit" name="budget" >Add Budget</button>
+       <button class="form-button" type="submit" name="budget" >Add Budget</button>
      </div>
    </form>
  </div>
  ';
- 
+
   $expenseform =
     '
     <div class="form-body">
@@ -44,13 +44,13 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
         <h2>Expense</h2>
         <div class="form-container">
           <hr>
-          <div class="container">
+          <div class="expense-container">
             <label for="item"><strong>Item</strong></label>
-            <input class="" type="text" name="item" placeholder="Item" required>
+            <input class="form-expense-input" type="text" name="item" placeholder="Item" required>
             <label for="cost"><strong>Cost</strong></label>
-            <input class="" type="number" name="cost" placeholder="Cost" required>
+            <input class="form-expense-input" type="number" name="cost" placeholder="Cost" required>
             <label for="category"><strong>Category</strong></label>
-            <select class="" name="category">
+            <select class="form-expense-input" name="category">
               <option disabled selected value> -- select an option -- </option>
               <option value="Food & Drink">Food & Drink</option>
               <option value="Groceries">Groceries</option>
@@ -62,7 +62,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
               <option value="Other">Other</option>
             </select>
           </div>
-          <button class="form-expense-button" type="submit" name="expense">Add Expense</button>
+          <button class="form-button" type="submit" name="expense">Add Expense</button>
         </div>
       </form>
     </div>
