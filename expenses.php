@@ -115,13 +115,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
     <h1>Add Or Update Your Category Budgets:</h1>
 
-    <div>
-        <?php
-
-          echo $budgetform;
-
-        ?>
-    </div>
+    <?php echo $budgetform; ?>
 
     <br>
 
