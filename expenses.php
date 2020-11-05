@@ -106,6 +106,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
       }
 
   ?>
+
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
    <?php require_once './layouts/head.php'; ?>
@@ -114,36 +115,21 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
     <h1>Add Or Update Your Category Budgets:</h1>
 
-    <div id="addbudgetform">
+    <div>
         <?php
+
           echo $budgetform;
+
         ?>
     </div>
 
     <br>
-
-    <div class="button-container">
-      <button class="round-button" type="submit" name="addbudgetform" onclick="addBudgetForm()">+</button>
-    </div>
-
-    <script type="text/javascript">
-
-      function addBudgetForm(){
-          var budgetform = "<?php $budgetform; ?>";
-          document.getElementById("addbudgetform").innerHTML = budgetform;
-      }
-
-    </script>
 
     <h1>Add Your Expenses:</h1>
 
     <?php echo $expenseform; ?>
 
     <br>
-
-    <div class="button-container">
-      <button class="round-button" type="submit" name="addexpenseform">+</button>
-    </div>
 
    </body>
  </html>
