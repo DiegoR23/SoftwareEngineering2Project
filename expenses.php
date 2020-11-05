@@ -95,15 +95,17 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
         }
       }
 
-    if(isset($_POST["expensebutton"], $_POST["item"], $_POST["cost"], $_POST["category"])
+    if(isset($_POST["expensebutton"], $_POST["item"], $_POST["cost"], $_POST["category"], $_POST["date"])
         && is_string($_POST["item"])
         && is_numeric($_POST["cost"])
         && is_string($_POST["category"])
+        && is_string($_POST["date"])
       ){
         $item = filter_var(trim($_POST["item"]),FILTER_SANITIZE_STRING);
         $cost = filter_var(trim($_POST["cost"]),FILTER_SANITIZE_NUMBER_FLOAT);
         $category = filter_var(trim($_POST["category"]),FILTER_SANITIZE_STRING);
-        $sql = "INSERT INTO expense (item, cost, category, userID) VALUES ('" . $item ."', '" . $cost . "', '" . $category . "', '" . $userID ."');";
+        $date = filter_var(trim($_POST["date"]), FILTER_SANITIZE_STRING);
+        $sql = "INSERT INTO expense (item, cost, category, dt, userID) VALUES ('" . $item ."', '" . $cost . "', '" . $category . "', '" . $date . "', '" . $userID ."');";
         $db->exec($sql);
       }
 
