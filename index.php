@@ -42,6 +42,11 @@ if(isset($_POST["login"], $_POST["email"], $_POST["password"])
     }
   }
 }
+
+// user logout
+if(isset($_POST["logout"])){
+  $_SESSION["is_loged_in"] = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +61,7 @@ if(isset($_POST["login"], $_POST["email"], $_POST["password"])
       </div>
     </div>
 
+    <?php if (!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){ ?>
       <h1>Login or Signup</h1>
 
       <!-- user login form -->
@@ -94,6 +100,23 @@ if(isset($_POST["login"], $_POST["email"], $_POST["password"])
           </div>
         </form>
       </div>
+    <?php }else{ ?>
+
+   <br>
+   <br>
+
+   <!-- user logout form -->
+   <div class="form-body">
+     <form method="post" class="form-form-logout">
+         <h2>Logout</h2>
+           <div class="form-container">
+             <hr>
+             <button class="form-button-logout" type="submit" name="logout">Logout</button>
+           </div>
+     </form>
+   </div>
+
+ <?php } ?>
 
   <script>
     if ( window.history.replaceState ) {

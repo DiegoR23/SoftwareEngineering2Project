@@ -144,12 +144,12 @@ html{
 
 
 
-  /* expense form */
-  .container label:first-of-type{
+  /* budget form and expense form */
+  .expense-container label:first-of-type{
     padding-left: 0;
   }
 
-  .container label{
+  .expense-container label{
     padding-left: 1vw;
   }
 

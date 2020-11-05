@@ -15,9 +15,9 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
      <h2>Budget</h2>
      <div class="form-container">
        <hr>
-       <div class="container">
+       <div class="expense-container">
          <label for="category"><strong>Category</strong></label>
-         <select name="category">
+         <select class="form-expense-input" name="category">
            <option disabled selected value> -- select an option -- </option>
            <option value="Food & Drink">Food & Drink</option>
            <option value="Groceries">Groceries</option>
@@ -29,7 +29,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
            <option value="Other">Other</option>
          </select>
          <label for="budget"><strong>Budget</strong></label>
-         <input class="" type="number" name="budget" placeholder="Budget" required>
+         <input class="form-expense-input" type="number" name="budget" placeholder="Budget" required>
        </div>
        <button class="form-button" type="submit" name="budget" >Add Budget</button>
      </div>
