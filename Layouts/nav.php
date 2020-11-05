@@ -15,7 +15,7 @@
       break;
     }
   }
-  if($_SESSION["is_loged_in"]==true){
+  if(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"]==true){
     $login = $dom->getElementbyId("login");
     $login->textContent = "Logout";
   }
