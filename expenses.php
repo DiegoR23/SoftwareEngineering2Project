@@ -81,6 +81,12 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
     <?php echo $budgetform; ?>
 
+    <br>
+
+    <div class="button-container">
+      <button class="round-button" type="submit" name="addbudgetform">+</button>
+    </div>
+
     <h1>Add Your Expenses:</h1>
 
     <?php echo $expenseform; ?>
