@@ -80,7 +80,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
         && is_numeric($_POST["budget"])
       ){
         $category = filter_var(trim($_POST["category"]), FILTER_SANITIZE_STRING);
-        $budget = filter_var(trim($_POST["budget"]), FLITER_SANITIZE_STRING);
+        $budget = filter_var(trim($_POST["budget"]), FILTER_SANITIZE_NUMBER_FLOAT);
         $sql = "SELECT category from budget where category='" . $category . "' and userID='" . $userID . "' LIMIT 1;";
         $check = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         if (empty($check)){
@@ -91,7 +91,6 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
           $sql = "UPDATE budget SET budget='" . $budget ."' WHERE category='" . $category ."' and userID='" . $userID . "';";
           $db->exec($sql);
         }
-
       }
 
   ?>
