@@ -141,3 +141,10 @@ html{
   }
 
 /* css for expenses.php */
+
+
+
+  /* expense form */
+  .form-expense-button{
+    display: inline-block;
+  }
