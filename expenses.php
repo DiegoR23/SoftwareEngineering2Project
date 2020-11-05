@@ -66,6 +66,8 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                 <option value="Personal">Personal</option>
                 <option value="Other">Other</option>
               </select>
+              <label for="date"><strong>Date</strong></label>
+              <input class="form-expense-input" type="date" name="date" placeholder="Date" required>
             </div>
           <button class="form-button" type="submit" name="expensebutton">Add Expense</button>
         </div>
