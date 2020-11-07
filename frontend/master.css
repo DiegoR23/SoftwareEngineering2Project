@@ -142,8 +142,6 @@ html{
 
 /* css for expenses.php */
 
-
-
   /* budget form and expense form */
   .expense-container label:first-of-type{
     padding-left: 0;
@@ -186,4 +184,17 @@ html{
 
   .round-button:active{
     border: 3px solid black;
+  }
+
+/* css for report.php */
+
+  /* report layout */
+  .grid-body{
+    display: grid;
+    justify-content: center;
+  }
+
+  .grid-container{
+    background: white;
+    border: 5px solid #8ebf42;
   }
