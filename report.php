@@ -69,13 +69,33 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                 $total = $result[0]['total'];
                 echo "Total spent: $total";
                 echo "<br>";
-                echo "Categories: ";
                 echo "<br>";
-                $sql = "SELECT SUM(budget) AS 'total budget' FROM budget WHERE userID='" . $userID ."';";
-                $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-                echo "<pre>";
-                var_dump($result);
-                echo "</pre>";
+                echo "Category Budgets: ";
+                echo "<br>";
+                $sql = "SELECT category, budget FROM budget WHERE userID='" . $userID . "';";
+                //$sql = "SELECT SUM(budget) AS 'total budget' FROM budget WHERE userID='" . $userID ."';";
+                $result = $db->query($sql);
+                if(!empty($result)){
+                  while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    $category = $row["category"];
+                    $budget = $row["budget"];
+                    echo "$category - $budget";
+                    echo "<br>";
+                  }
+                }
+                echo "<br>";
+                echo "Category Expenses:";
+                echo "<br>";
+                $sql = "SELECT category, SUM(cost) AS spent from expense WHERE userID='" . $userID . "' AND YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' GROUP BY category;";
+                $result = $db->query($sql);
+                if(!empty($result)){
+                  while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    $category = $row["category"];
+                    $spent = $row["spent"];
+                    echo "$category - $spent";
+                    echo "<br>";
+                  }
+                }
               ?>
             </div>
           </div>
