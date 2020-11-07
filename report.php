@@ -62,6 +62,22 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
         <div class="grid-body">
           <div class="grid-container">
             <div id="piechart"></div>
+            <div id="expense-report">
+              <?php
+                $sql = "SELECT SUM(cost) AS total FROM expense WHERE userID='" . $userID . "' AND MONTH(dt)='" . $_SESSION['month'] . "';";
+                $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+                $total = $result[0]['total'];
+                echo "Total spent: $total";
+                echo "<br>";
+                echo "Categories: ";
+                echo "<br>";
+                $sql = "SELECT SUM(budget) AS 'total budget' FROM budget WHERE userID='" . $userID ."';";
+                $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+                echo "<pre>";
+                var_dump($result);
+                echo "</pre>";
+              ?>
+            </div>
           </div>
         </div>
       <?php $_SESSION['activatereport']=false; } ?>
