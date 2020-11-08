@@ -75,7 +75,11 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                 echo "<br>";
                 $sql = "SELECT category, budget FROM budget WHERE userID='" . $userID . "';";
                 $result = $db->query($sql);
-                if(!empty($result)){
+                if(empty($result)){
+                  echo "No Category Budgets Have Been Set";
+                  echo "<br>";
+                }
+                else{
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
                     $budget = $row["budget"];
@@ -83,16 +87,15 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                     echo "<br>";
                   }
                 }
-                else{
-                  echo "Category Budgets Have Not Been Set";
-                  echo "<br>";
-                }
                 echo "<br>";
                 echo "Category Expenses:";
                 echo "<br>";
                 $sql = "SELECT category, SUM(cost) AS spent from expense WHERE userID='" . $userID . "' AND YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' GROUP BY category;";
                 $result = $db->query($sql);
-                if(!empty($result)){
+                if(empty($result)){
+                  echo "No Expenses";
+                }
+                else{
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
                     $spent = $row["spent"];
