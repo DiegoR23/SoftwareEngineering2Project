@@ -82,8 +82,10 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                     echo "$category - $$budget";
                     echo "<br>";
                   }
-                }else{
+                }
+                else{
                   echo "Category Budgets Have Not Been Set";
+                  echo "<br>";
                 }
                 echo "<br>";
                 echo "Category Expenses:";
@@ -98,32 +100,28 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                     echo "<br>";
                   }
                 }
-                $sql = "SELECT expense.category, budget.budget, SUM(expense.cost) AS spent FROM expense, budget WHERE YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' AND expense.userID=1 AND expense.category=budget.category GROUP BY category;";
+                $sql = "SELECT a.category, b.budget, SUM(a.cost) AS spent FROM expense a INNER JOIN (SELECT budget.category, budget.budget FROM budget where userID='" . $userID . "') AS b ON a.category=b.category WHERE a.userID='" . $userID ."' AND YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' GROUP BY a.category;";
                 $result = $db->query($sql);
                 if(!empty($result)){
+                  echo "<br>";
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
                     $budget = $row["budget"];
                     $spent = $row["spent"];
                     $diff = $budget - $spent;
-                    echo "<br>";
                     if($diff>0){
                       echo "<p class='underspent'>";
                       echo "You underspent in $category by $$diff";
-                      echo "<br>";
                       echo "</P>";
                     }
                     elseif($diff<0){
                       $diff = -($diff);
                       echo "<p class='overspent'>";
                       echo "You overspent in $category by $$diff";
-                      echo "<br>";
                     }
                     else{
                       echo "You sticked to you budget for $category";
-                      echo "<br>";
                     }
-
                   }
                 }
               ?>
