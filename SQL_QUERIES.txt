@@ -7,3 +7,6 @@ SELECT DISTINCT YEAR(dt) as year FROM expense WHERE userID=1 ORDER BY dt DESC;
 
 // returns table contaning total spent on a category in a given month of the year.
 SELECT category, SUM(cost) AS spent from expense WHERE userID=1 AND YEAR(dt)="2020" AND MONTH(dt)="11" GROUP BY category;
+
+// returns table containing category and its perspective budget and total spent.
+select expense.category, budget.budget, SUM(expense.cost) from expense, budget where YEAR(dt)="2020" and MONTH(dt)="11" and expense.userID=1 and expense.category=budget.category GROUP BY category;

@@ -60,11 +60,14 @@ if(isset($_POST["logout"])){
           <img src="./images/logo.png" alt="Website Logo">
       </div>
     </div>
-    <p>About: Our expense tracking web application will provide you with the
-      ability to input your expenses and set budgets for different
-      categories of expenses. The application will provide you with a clean
-      and easy-to-read report page showing the user how much money was
-      allocated to different expense categories. Login or signup to start.</p>
+    <div class="about">
+      <p>Our expense tracking web application will provide you with the
+        ability to input your expenses and set budgets for different
+        categories of expenses. The application will provide you with a clean
+        and easy-to-read report page showing the user how much money was
+        allocated to different expense categories. Login or signup to start.</p>
+    </div>
+
 
     <?php if (!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){ ?>
       <h1>Login or Signup</h1>

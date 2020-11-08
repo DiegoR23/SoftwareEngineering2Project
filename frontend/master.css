@@ -67,6 +67,17 @@ html{
     color: white;
   }
 
+  .about{
+    display: flex;
+    justify-content: center;
+  }
+
+  .about p{
+    color: white;
+    width: 50%;
+    font-size: 30px;
+  }
+
   /* login and signup forms */
   .form-body{
     display: flex;
@@ -190,12 +201,30 @@ html{
 
   /* report layout */
   .grid-body{
-    display: grid;
+    display: flex;
     justify-content: center;
   }
 
   .grid-container{
     background: white;
     border: 5px solid #8ebf42;
-    font: Arial;
+    font-family: "Arial",cursive;
+    font-size: 20px;
+  }
+
+  .expense-report{
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+
+  .expense-report p{
+    margin: 0;
+  }
+
+  .expense-report .underspent{
+    color: green;
+  }
+
+  .expense-report .overspent{
+    color: red;
   }

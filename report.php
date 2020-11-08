@@ -57,31 +57,33 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
    </div>
 
       <br>
+      <br>
 
       <?php if(isset($_POST['reportbutton'], $_SESSION['activatereport']) && $_SESSION['activatereport']==true) { ?>
         <div class="grid-body">
           <div class="grid-container">
             <div id="piechart"></div>
-            <div id="expense-report">
+            <div class="expense-report">
               <?php
-                $sql = "SELECT SUM(cost) AS total FROM expense WHERE userID='" . $userID . "' AND MONTH(dt)='" . $_SESSION['month'] . "';";
+                $sql = "SELECT SUM(cost) AS total FROM expense WHERE userID='" . $userID . "' AND MONTH(dt)='" . $_SESSION['month'] . "' and YEAR(dt)='" . $_SESSION['year'] . "';";
                 $result = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                 $total = $result[0]['total'];
-                echo "Total spent: $total";
+                echo "Total spent: $$total";
                 echo "<br>";
                 echo "<br>";
                 echo "Category Budgets: ";
                 echo "<br>";
                 $sql = "SELECT category, budget FROM budget WHERE userID='" . $userID . "';";
-                //$sql = "SELECT SUM(budget) AS 'total budget' FROM budget WHERE userID='" . $userID ."';";
                 $result = $db->query($sql);
                 if(!empty($result)){
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
                     $budget = $row["budget"];
-                    echo "$category - $budget";
+                    echo "$category - $$budget";
                     echo "<br>";
                   }
+                }else{
+                  echo "Category Budgets Have Not Been Set";
                 }
                 echo "<br>";
                 echo "Category Expenses:";
@@ -92,8 +94,36 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
                     $spent = $row["spent"];
-                    echo "$category - $spent";
+                    echo "$category - $$spent";
                     echo "<br>";
+                  }
+                }
+                echo "<br>";
+                $sql = "SELECT expense.category, budget.budget, SUM(expense.cost) AS spent FROM expense, budget WHERE YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' AND expense.userID=1 AND expense.category=budget.category GROUP BY category;";
+                $result = $db->query($sql);
+                if(!empty($result)){
+                  while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    $category = $row["category"];
+                    $budget = $row["budget"];
+                    $spent = $row["spent"];
+                    $diff = $budget - $spent;
+                    if($diff>0){
+                      echo "<p class='underspent'>";
+                      echo "You underspent in $category by $$diff";
+                      echo "<br>";
+                      echo "</P>";
+                    }
+                    elseif($diff<0){
+                      $diff = -($diff);
+                      echo "<p class='overspent'>";
+                      echo "You overspent in $category by $$diff";
+                      echo "<br>";
+                    }
+                    else{
+                      echo "You sticked to you budget for $category";
+                      echo "<br>";
+                    }
+
                   }
                 }
               ?>
