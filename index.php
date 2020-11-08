@@ -63,9 +63,10 @@ if(isset($_POST["logout"])){
     <div class="about">
       <p>Our expense tracking web application will provide you with the
         ability to input your expenses and set budgets for different
-        categories of expenses. The application will provide you with a clean
-        and easy-to-read report page showing the user how much money was
-        allocated to different expense categories. Login or signup to start.</p>
+        categories of expenses. The application will then provide you with a clean
+        and easy-to-read report page; showing the user how much money was
+        allocated to different expense categories, how much was spent, and if you
+        went over or under budget. Login or signup to start.</p>
     </div>
 
 
