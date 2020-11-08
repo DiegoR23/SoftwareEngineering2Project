@@ -98,7 +98,6 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                     echo "<br>";
                   }
                 }
-                echo "<br>";
                 $sql = "SELECT expense.category, budget.budget, SUM(expense.cost) AS spent FROM expense, budget WHERE YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' AND expense.userID=1 AND expense.category=budget.category GROUP BY category;";
                 $result = $db->query($sql);
                 if(!empty($result)){
@@ -107,6 +106,7 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                     $budget = $row["budget"];
                     $spent = $row["spent"];
                     $diff = $budget - $spent;
+                    echo "<br>";
                     if($diff>0){
                       echo "<p class='underspent'>";
                       echo "You underspent in $category by $$diff";
