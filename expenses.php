@@ -90,8 +90,14 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
           $db->exec($sql);
         }
         else {
-          $sql = "UPDATE budget SET budget='" . $budget ."' WHERE category='" . $category ."' and userID='" . $userID . "';";
-          $db->exec($sql);
+          if($budget!=0.00){
+            $sql = "UPDATE budget SET budget='" . $budget ."' WHERE category='" . $category ."' and userID='" . $userID . "';";
+            $db->exec($sql);
+          }
+          else{
+            $sql = "DELETE FROM budget WHERE category='" . $category ."' and userID='" . $userID . "';";
+            $db->exec($sql);
+          }
         }
       }
 
