@@ -75,7 +75,8 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                 echo "<br>";
                 $sql = "SELECT category, budget FROM budget WHERE userID='" . $userID . "';";
                 $result = $db->query($sql);
-                if(empty($result)){
+                $count = $result->rowCount();
+                if($count == 0){
                   echo "No Category Budgets Have Been Set";
                   echo "<br>";
                 }
@@ -105,7 +106,8 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
                 }
                 $sql = "SELECT a.category, b.budget, SUM(a.cost) AS spent FROM expense a INNER JOIN (SELECT budget.category, budget.budget FROM budget where userID='" . $userID . "') AS b ON a.category=b.category WHERE a.userID='" . $userID ."' AND YEAR(dt)='" . $_SESSION['year'] . "' AND MONTH(dt)='" . $_SESSION['month'] . "' GROUP BY a.category;";
                 $result = $db->query($sql);
-                if(!empty($result)){
+                $count = $result->rowCount();
+                if($count != 0){
                   echo "<br>";
                   while($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $category = $row["category"];
