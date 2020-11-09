@@ -66,7 +66,7 @@ if(isset($_POST["logout"])){
         categories of expenses. The application will then provide you with a clean
         and easy-to-read report page; showing the user how much money was
         allocated to different expense categories, how much was spent, and if you
-        went over or under budget. Login or signup to start.</p>
+        went over or under or sticked to your budget. Login or signup to start.</p>
     </div>
 
 
