@@ -1,5 +1,6 @@
 <?php
 require_once './includes/inc.php';
+require_once './layouts/forms.php';
 
 // user signup
 if(isset($_POST["signup"], $_POST["email"], $_POST["password"])
@@ -74,56 +75,21 @@ if(isset($_POST["logout"])){
       <h1>Login or Signup</h1>
 
       <!-- user login form -->
-      <div class="form-body">
-        <form method="post" class="form-form">
-          <h2>Login</h2>
-          <div class="form-container">
-            <hr>
-            <div class="container">
-              <label for="email"><strong>Email</strong></label>
-              <input class="form-input" type="email" name="email" placeholder="Email" required>
-              <label for="password"><strong>Password</strong></label>
-              <input class="form-input" type="password" name="password" placeholder="Password (Must not be empty or all spaces)" required>
-            </div>
-            <button class="form-button" type="submit" name="login" >Login</button>
-          </div>
-        </form>
-      </div>
+      <?php echo $loginForm; ?>
 
       <br>
       <br>
 
       <!-- user signup form -->
-      <div class="form-body">
-        <form method="post" class="form-form">
-          <h2>Signup</h2>
-          <div class="form-container">
-            <hr>
-            <div class="container">
-              <label for="email"><strong>Email</strong></label>
-              <input class="form-input" type="email" name="email" placeholder="Email" required>
-              <label for="password"><strong>Password</strong></label>
-              <input class="form-input" type="password" name="password" placeholder="Password (Must not be empty or all spaces)" required>
-            </div>
-            <button class="form-button" type="submit" name="signup" value="<?php echo $rand; ?>" >Signup</button>
-          </div>
-        </form>
-      </div>
+      <?php echo $signupForm; ?>
+
     <?php }else{ ?>
 
-   <br>
-   <br>
+         <br>
+         <br>
 
-   <!-- user logout form -->
-   <div class="form-body">
-     <form method="post" class="form-form-logout">
-         <h2>Logout</h2>
-           <div class="form-container">
-             <hr>
-             <button class="form-button-logout" type="submit" name="logout">Logout</button>
-           </div>
-     </form>
-   </div>
+         <!-- user logout form -->
+         <?php echo $logoutForm; ?>
 
  <?php } ?>
 

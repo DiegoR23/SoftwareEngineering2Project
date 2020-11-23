@@ -11,70 +11,10 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
   // user variable
   $userID = $_SESSION['user'];
 
-  // budget form
-   $budgetform =
-   '
-   <div class="form-body">
-     <form method="post" class="form-form">
-       <h2>Budget</h2>
-       <div class="form-container">
-         <hr>
-         <div class="expense-container">
-           <label for="category"><strong>Category</strong></label>
-           <select class="form-expense-input" name="category">
-             <option disabled selected value> -- select an option -- </option>
-             <option value="Food & Drink">Food & Drink</option>
-             <option value="Groceries">Groceries</option>
-             <option value="Shopping & Entertainment">Shopping & Entertainment</option>
-             <option value="Home & Utilities">Home & Utilities</option>
-             <option value="Transportation">Transportation</option>
-             <option value="Travel">Travel</option>
-             <option value="Personal">Personal</option>
-             <option value="Other">Other</option>
-           </select>
-           <label for="budget"><strong>Budget</strong></label>
-           <input class="form-expense-input" type="number" name="budget" placeholder="Budget" required>
-         </div>
-         <button class="form-button" type="submit" name="budgetbutton" >Add Budget</button>
-       </div>
-     </form>
-   </div>
-   ';
+  require_once './layouts/forms.php';
 
-    // expense form
-    $expenseform =
-    '
-    <div class="form-body">
-      <form method="post" class="form-form">
-        <h2>Expense</h2>
-          <div class="form-container">
-            <hr>
-            <div class="expense-container">
-              <label for="item"><strong>Item</strong></label>
-              <input class="form-expense-input" type="text" name="item" placeholder="Item" required>
-              <label for="cost"><strong>Cost</strong></label>
-              <input class="form-expense-input" type="number" name="cost" placeholder="Cost" required>
-              <label for="category"><strong>Category</strong></label>
-              <select class="form-expense-input" name="category">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="Food & Drink">Food & Drink</option>
-                <option value="Groceries">Groceries</option>
-                <option value="Shopping & Entertainment">Shopping & Entertainment</option>
-                <option value="Home & Utilities">Home & Utilities</option>
-                <option value="Transportation">Transportation</option>
-                <option value="Travel">Travel</option>
-                <option value="Personal">Personal</option>
-                <option value="Other">Other</option>
-              </select>
-              <label for="date"><strong>Date</strong></label>
-              <input class="form-expense-input" type="date" name="date" placeholder="Date" required>
-            </div>
-          <button class="form-button" type="submit" name="expensebutton">Add Expense</button>
-        </div>
-      </form>
-    </div>
-    ';
  ?>
+
  <?php
 
     if(isset($_POST["budgetbutton"], $_POST["category"], $_POST["budget"])
@@ -125,13 +65,15 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
     <h1>Add Or Update Your Category Budgets:</h1>
 
-    <?php echo $budgetform; ?>
+    <!-- budget form -->
+    <?php echo $budgetForm; ?>
 
     <br>
 
     <h1>Add Your Expenses:</h1>
 
-    <?php echo $expenseform; ?>
+    <!-- expense form -->
+    <?php echo $expenseForm; ?>
 
     <br>
 

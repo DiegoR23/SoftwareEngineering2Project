@@ -31,35 +31,38 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
       <br>
 
-    <div class="form-body">
-     <form method="post" class="form-form">
-       <h2>Expense Report</h2>
-       <div class="form-container">
-         <hr>
-         <div class="expense-container">
-           <label for="selectreport"><strong>Select A Report</strong></label>
-           <select class="form-expense-input" name="selectreport">
-             <option disabled selected value> -- select an option -- </option>
-             <?php
-               $sql = "SELECT DISTINCT YEAR(dt) AS year, MONTH(dt) as month FROM expense WHERE userID='" . $userID . "' ORDER BY dt DESC;";
-               $result = $db->query($sql);
-               while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                 if(!empty($row)){
-                   echo '<option value="'.$row['year'].' '.$row['month'].'">'.$row['year'].' - '.$row['month'].'</option>';
+      <!-- report form -->
+      <div class="form-body">
+       <form method="post" class="form-form">
+         <h2>Expense Report</h2>
+         <div class="form-container">
+           <hr>
+           <div class="expense-container">
+             <label for="selectreport"><strong>Select A Report</strong></label>
+             <select class="form-expense-input" name="selectreport">
+               <option disabled selected value> -- select an option -- </option>
+               <?php
+                 $sql = "SELECT DISTINCT YEAR(dt) AS year, MONTH(dt) as month FROM expense WHERE userID='" . $userID . "' ORDER BY dt DESC;";
+                 $result = $db->query($sql);
+                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                   if(!empty($row)){
+                     echo '<option value="'.$row['year'].' '.$row['month'].'">'.$row['year'].' - '.$row['month'].'</option>';
+                   }
                  }
-               }
-             ?>
-           </select>
+               ?>
+             </select>
+           </div>
+           <button class="form-button" type="submit" name="reportbutton" >Get Report</button>
          </div>
-         <button class="form-button" type="submit" name="reportbutton" >Get Report</button>
-       </div>
-      </form>
-   </div>
+        </form>
+     </div>
 
       <br>
       <br>
 
       <?php if(isset($_POST['reportbutton'], $_SESSION['activatereport']) && $_SESSION['activatereport']==true) { ?>
+
+        <!-- display report -->
         <div class="grid-body">
           <div class="grid-container">
             <div id="piechart"></div>
