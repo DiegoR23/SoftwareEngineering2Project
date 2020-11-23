@@ -1,5 +1,6 @@
 <?php
-require_once './includes/inc.php';
+  require_once './includes/inc.php';
+  require_once './layouts/forms.php';
 
 if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
   header("Location: index.php");
@@ -8,14 +9,8 @@ if(!(isset($_SESSION["is_loged_in"]) && $_SESSION["is_loged_in"] == true)){
 
  <?php
 
-  // user variable
-  $userID = $_SESSION['user'];
-
-  require_once './layouts/forms.php';
-
- ?>
-
- <?php
+     // user variable
+     $userID = $_SESSION['user'];
 
     if(isset($_POST["budgetbutton"], $_POST["category"], $_POST["budget"])
         && is_string($_POST["category"])
