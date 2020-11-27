@@ -6,7 +6,6 @@ require_once './layouts/forms.php';
 if(isset($_POST["signup"], $_POST["email"], $_POST["password"])
     && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)
     && (check_password($_POST["password"]))
-    && $_POST["signup"] == $_SESSION["rand"]
   ){
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT);
@@ -19,8 +18,6 @@ if(isset($_POST["signup"], $_POST["email"], $_POST["password"])
       echo '<script type="text/javascript"> alert("Account Already Exists") </script>';
     }
   }
-
-$rand = $_SESSION["rand"] = rand(100000, 999999);
 
 // user login
 if(isset($_POST["login"], $_POST["email"], $_POST["password"])

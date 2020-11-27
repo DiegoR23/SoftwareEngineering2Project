@@ -34,7 +34,7 @@
           <label for="password"><strong>Password</strong></label>
           <input class="form-input" type="password" name="password" placeholder="Password (Must not be empty or all spaces)" required>
         </div>
-        <button class="form-button" type="submit" name="signup" value="<?php echo $rand; ?>" >Signup</button>
+        <button class="form-button" type="submit" name="signup" >Signup</button>
       </div>
     </form>
   </div>
